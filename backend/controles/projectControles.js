@@ -29,7 +29,7 @@ const viewproject=async (req,res)=>{
     if(!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({error:"Invalid project id"})
     }
-    const project= await Project.findById(id)
+    const project= await Project.findById(id).populate('leaderAssigned')
     if(!project){
         return res.status(404).json({error:"Project not found"})
     }
@@ -49,7 +49,7 @@ const viewProjecByNameOrId = async (req, res) => {
     query.push({ projectName: { $regex: new RegExp(id, 'i') } });
 
     try {
-        const project = await Project.find({ $or: query });
+        const project = await Project.find({ $or: query }).populate('leaderAssigned');
         if (!project) {
             return res.status(404).json({ error: "Project not found" });
         }

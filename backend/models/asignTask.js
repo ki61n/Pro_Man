@@ -2,6 +2,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const taskSchema = new Schema({
+    project:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Asignmembers',
+        required: true
+    },projectcol:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Project',
+        required: true
+    },
     member: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Asignmembers', // Reference to Asignmembers collection

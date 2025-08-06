@@ -6,6 +6,14 @@ const memRequests=new schema({
         ref: 'Asignmembers', // Reference to Asignmembers collection
         require:true
     },
+    username:{
+         type:mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    task:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref: 'AsignTask', // Reference to Tasks collection
+    },
     teamleader:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Project',

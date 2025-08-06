@@ -2,6 +2,7 @@ const User=require('../models/Ureg')
 const bcrypt = require('bcrypt');
 const mongoose=require('mongoose');
 const Project = require('../models/Project');
+const jwt=require('jsonwebtoken')
 const reg=async (req,res)=>{
     const {userName,email,password,userType,projectAsignedStat}=req.body
     const hashpassword=await bcrypt.hash(password,10)
@@ -13,6 +14,9 @@ const reg=async (req,res)=>{
         res.status(400).json({error:error.message})
     }
 }
+
+
+
 const viewAllUsers=async (req,res)=>{
     try{
         const users=await User.find({}).sort({createdAt:-1})
@@ -22,6 +26,16 @@ catch(error){
     res.status(400).json({error:error.message})
 }
 }
+const Viewmembers=async (req,res)=>{
+    try{
+        const members=await User.find({userType:"user"}).sort({createdAt:-1})
+        res.status(201).json(members)
+    }catch(error){
+        res.status(400).json({error:error.message})
+    }
+}
+
+
 const viewUser=async (req,res)=>{
     let query=[]
     const {id}=req.params
@@ -45,6 +59,9 @@ if(!user){
 }catch(error){
     res.status(400).json({error:error.message})
 }}
+
+
+
 const updateUser = async (req, res) => {
     const { id } = req.params;
     let updateData = { ...req.body };
@@ -65,4 +82,25 @@ const updateUser = async (req, res) => {
     res.status(200).json(updateuser);
 }
 
-module.exports={reg,viewAllUsers,viewUser,updateUser}
+
+const login=async (req,res)=>{
+    const {email,password}=req.body
+    const user=await User.findOne({email})
+    if(!user){
+        res.status(400).json({error:'user not found'})
+    }
+    const ismatch = await bcrypt.compare(password,user.password)
+    if(!ismatch){
+        return res.status(400).json({error:'password is incorrect'})
+    }
+    try{
+        const token=jwt.sign({id:user._id,userType:user.userType},process.env.JWT_SECRET,{expiresIn:'1h'})
+        res.status(200).json({token,id:user._id,userType:user.userType})
+
+    }
+    catch(error){
+        res.status(400).json({error:error.message})
+    }
+}
+
+module.exports={reg,viewAllUsers,Viewmembers,viewUser,updateUser,login}

@@ -11,6 +11,10 @@ const ledRequest=new schema({
         ref:'User',
         require:true
     },
+    project:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref: 'Project',
+    },
     request:{
         type:String,
         require:true
