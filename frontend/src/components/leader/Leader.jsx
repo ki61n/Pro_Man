@@ -13,6 +13,10 @@ import ViewTasks from './ViewTasks'
 import UpdateTask from './UpdateTask'
 import Leadereq from './leaderreq'
 import Respond from './Respond'
+import Allrequests from './Allrequests'
+import Acceptedreq from './Acceptedreq'
+import Rejectedreq from './Rejectedreq'
+import Rejdetails from './rejdetails'
 
 function Leader() {
   return (
@@ -32,8 +36,13 @@ function Leader() {
           <Route path='leaderhome/project_task/projectmembers/:id/viewtasks/:mid' element={<ViewTasks/>}/>
           <Route path='leaderhome/project_task/projectmembers/:id/updatetasks/:mid' element={<UpdateTask/>}/>
          
-         <Route path='leaderhome/requests' element={<Leadereq />} /> 
+         <Route path='leaderhome/allreq' element={<Allrequests />} /> 
+         <Route path='leaderhome/allreq/requests' element={<Leadereq />} /> 
+          <Route path='leaderhome/allreq/accepted' element={<Acceptedreq />} /> 
+           <Route path='leaderhome/allreq/rejected' element={<Rejectedreq />} /> 
           <Route path='leaderhome/requests/replay/:id' element={<Respond   />} /> 
+          <Route path='leaderhome/requests/view/:id' element={<Rejdetails   />} /> 
+        
       </Routes>
     </div>
   )

@@ -16,7 +16,7 @@ function Leadernav() {
           <Link to="/leader/leaderhome/project_task">Tasks</Link>
         </li>
          <li>
-          <Link to="/leader/leaderhome/requests">Requests</Link>
+          <Link to="/leader/leaderhome/allreq">Requests</Link>
         </li>
         <li>
           <a
