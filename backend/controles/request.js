@@ -213,6 +213,61 @@ const MemviewreqByidstat = async (req, res) => {
     }
 };
 
+
+const MemviewreqByidrejected = async (req, res) => {
+    const { id } = req.params;
+
+    // Validate the id
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({ error: "Invalid id" });
+    }
+
+    // Build query
+    const query = [
+        { _id: id },
+        { requestedmember: id },
+        {teamleader:id}
+    ];
+
+    try {
+        const memreq = await memRequest.find({ $or: query ,status:'rejected'}).populate('username').populate('task');
+        if (memreq.length === 0) {
+            return res.status(404).json({ error: "No  requests found with the given ID" });
+        }
+        res.status(200).json(memreq);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+
+
+
+const MemviewreqByidaccepted = async (req, res) => {
+    const { id } = req.params;
+
+    // Validate the id
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({ error: "Invalid id" });
+    }
+
+    // Build query
+    const query = [
+        { _id: id },
+        { requestedmember: id },
+        {teamleader:id}
+    ];
+
+    try {
+        const memreq = await memRequest.find({ $or: query ,status:'accepted'}).populate('username').populate('task');
+        if (memreq.length === 0) {
+            return res.status(404).json({ error: "No  requests found with the given ID" });
+        }
+        res.status(200).json(memreq);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+
 const leaderResponse=async (req,res)=>{
     const {id}=req.params
     let updateres = { ...req.body }
@@ -231,4 +286,4 @@ const leaderResponse=async (req,res)=>{
 
 
 module.exports = { createLeaderRequest,memberrequest,viewLeaderRequest ,viewreqByid,viewLeaderReqby,adminResponse
-    ,leaderResponse,MemviewreqByid,viewMemberRequest,viewMemberReqby,MemviewreqByidstat};
+    ,leaderResponse,MemviewreqByid,viewMemberRequest,viewMemberReqby,MemviewreqByidstat,MemviewreqByidaccepted,MemviewreqByidrejected };
