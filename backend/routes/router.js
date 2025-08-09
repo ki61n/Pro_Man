@@ -3,7 +3,7 @@ const router=express.Router()
 const {reg, viewAllUsers, viewUser, updateUser, login, Viewmembers} =require("../controles/userControles")
 const { addProject, viewallproject, viewproject, Updateproject, viewProjecByNameOrId } = require('../controles/projectControles')
 const { asignMember,taskassign, getAsignMembers, getAsignMembersById, updateMembers, getAllTaskAssign, gettaskAssignedByid, updateTask, gettaskAssignedBymemid } = require('../controles/tasks')
-const { createLeaderRequest, memberrequest, viewLeaderRequest, viewreqByid, viewLeaderReqby, adminResponse, viewMemberReqby, viewMemberRequest, MemviewreqByid, leaderResponse, MemviewreqByidstat, MemviewreqByidaccepted, MemviewreqByidrejected } = require('../controles/request')
+const { createLeaderRequest, memberrequest, viewLeaderRequest, viewreqByid, viewLeaderReqby, adminResponse, viewMemberReqby, viewMemberRequest, MemviewreqByid, leaderResponse, MemviewreqByidstat, MemviewreqByidaccepted, MemviewreqByidrejected, MemviewreqBy } = require('../controles/request')
 const { varifyTocken, authrole } = require('../middleware/auth')
 router.get('/',(req,res)=>{
     res.send("welcome")
@@ -51,6 +51,8 @@ router.get("/viewmemreqByid/:id", MemviewreqByid);
 router.get("/viewmemreqByidstat/:id", MemviewreqByidstat);
 router.get("/viewmemreqByidacc/:id", MemviewreqByidaccepted);
 router.get("/viewmemreqByidrej/:id", MemviewreqByidrejected);
+ router.get("/viewmemreqBy/:tid/:id", MemviewreqBy);
+
 
 router.put("/leaderresponce/:id", leaderResponse); 
 

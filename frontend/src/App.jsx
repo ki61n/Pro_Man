@@ -5,11 +5,13 @@ import Admin from './components/admin/Admin';
 import Leader from './components/leader/Leader';
 import Member from './components/member/Member';
 import Viewproject from './components/admin/viewproject';
+import Nav from './components/nav';
 
 function App() {
 
   return (
     <>
+    <Nav />
       <Routes>
         <Route path="/" element={<Login />} /> 
         <Route path="/admin/*" element={<Admin />} />

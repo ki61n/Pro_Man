@@ -3,17 +3,38 @@ const bcrypt = require('bcrypt');
 const mongoose=require('mongoose');
 const Project = require('../models/Project');
 const jwt=require('jsonwebtoken')
-const reg=async (req,res)=>{
-    const {userName,email,password,userType,projectAsignedStat}=req.body
-    const hashpassword=await bcrypt.hash(password,10)
-    try{
-        const user=await User.create({userName,email,password:hashpassword,userType,projectAsignedStat})
-        res.status(400).json(user)
-    }
-    catch(error){
-        res.status(400).json({error:error.message})
-    }
-}
+// const reg=async (req,res)=>{
+//     const {userName,email,password,userType,projectAsignedStat}=req.body
+//     const hashpassword=await bcrypt.hash(password,10)
+//     try{
+//         const user=await User.create({userName,email,password:hashpassword,userType,projectAsignedStat})
+//         res.status(400).json(user)
+//     }
+//     catch(error){
+//         res.status(400).json({error:error.message})
+//     }
+// }
+const reg = async (req, res) => {
+  const { userName, email, password, userType, projectAsignedStat } = req.body;
+  const hashpassword = await bcrypt.hash(password, 10);
+
+  try {
+    const user = await User.create({
+      userName,
+      email,
+      password: hashpassword,
+      userType,
+      projectAsignedStat,
+    });
+
+    // ✅ Successful registration
+    res.status(201).json({ message: 'User registered successfully', user });
+  } catch (error) {
+    // ❌ Registration failed
+    res.status(400).json({ error: error.message });
+  }
+};
+
 
 
 
@@ -26,6 +47,7 @@ catch(error){
     res.status(400).json({error:error.message})
 }
 }
+
 const Viewmembers=async (req,res)=>{
     try{
         const members=await User.find({userType:"user"}).sort({createdAt:-1})

@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-function MemTasks() {
+function Myrequests() {
   const id=localStorage.getItem('id')
   const mid = id; // Assuming 'id' is the member ID from localStorage
   console.log("Member ID:", id);
@@ -32,7 +32,7 @@ function MemTasks() {
             <h2>Task :{task.task} </h2>
             <p>Task description: {task.TaskDescription}</p>
             <p>Due Date : {task.dueDate}</p>
-            <button className='btn1' onClick={()=>navigate(`/member/memberhome/requests/${task._id}/${task.projectcol.leaderAssigned}`)}>request</button>
+            <button className='btn1' onClick={()=>navigate(`/member/memberhome/myrequests/${task._id}/${task.projectcol.leaderAssigned}`)}>myrequest</button>
 
           </div>))}
 
@@ -42,4 +42,6 @@ function MemTasks() {
   )
 }
 
-export default MemTasks
+export default Myrequests
+
+

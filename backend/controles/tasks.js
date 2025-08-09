@@ -173,8 +173,7 @@ const gettaskAssignedBymemid = async (req, res) => {
     const { id } = req.params;
     const query=[]
     if(mongoose.Types.ObjectId.isValid(id))
-       query.push({member:id}),
-    query.push({_id:id})
+       query.push({member:id})
         try {
             const taskassigned=await AsignTask.find({$or: query}).populate('projectcol')
             if (!taskassigned) {

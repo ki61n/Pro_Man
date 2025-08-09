@@ -186,6 +186,37 @@ const MemviewreqByid = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 };
+const MemviewreqBy = async (req, res) => {
+  const { id, tid } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "Invalid id" });
+  }
+
+  try {
+    const memreq = await memRequest.find({
+      $and: [
+        {
+          $or: [
+            { _id: id },
+            { requestedmember: id },
+            { teamleader: id }
+          ]
+        },
+        { task: tid } // ensure this matches your schema field
+      ]
+    }).populate('username').populate('task');
+
+    if (memreq.length === 0) {
+      return res.status(404).json({ error: "No requests found with the given ID and TID" });
+    }
+
+    res.status(200).json(memreq);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 
 const MemviewreqByidstat = async (req, res) => {
     const { id } = req.params;
@@ -286,4 +317,4 @@ const leaderResponse=async (req,res)=>{
 
 
 module.exports = { createLeaderRequest,memberrequest,viewLeaderRequest ,viewreqByid,viewLeaderReqby,adminResponse
-    ,leaderResponse,MemviewreqByid,viewMemberRequest,viewMemberReqby,MemviewreqByidstat,MemviewreqByidaccepted,MemviewreqByidrejected };
+    ,leaderResponse,MemviewreqByid,viewMemberRequest,viewMemberReqby,MemviewreqByidstat,MemviewreqByidaccepted,MemviewreqByidrejected ,MemviewreqBy};
