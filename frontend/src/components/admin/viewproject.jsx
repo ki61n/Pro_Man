@@ -62,11 +62,11 @@ const navigate=useNavigate()
   }, []);
 
   return (
-    <div>
+    <div className='mx-40 max-sm:mx-10 sm:mx-25'>
       <h1>View Project</h1>
       <div className="fullgrid" >
         {data.map((r, i) => (
-          <div className="card flex flex-col justify-around max-w-[50rem] gap-5 col-span-4" key={i}>
+          <div className="card flex flex-col justify-around max-w-[50rem] gap-5  sm:col-span-6 max-sm:col-span-11 rounded-3xl p-8 md:col-span-4 " key={i}>
             <h2>Project Name: {r.projectName}</h2>
             <p>Project Description: {r.projectDescription}</p>
             <button className="btn1" onClick={()=>{ navigate(`viewproject/${r._id}`)}}>View Project</button>

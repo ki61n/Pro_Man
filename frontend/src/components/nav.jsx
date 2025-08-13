@@ -1,22 +1,21 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Nav() {
-   const navigate=useNavigate()
   return (
      <div className="flex">
       <ul className="flex gap-3">
         <li>
-          <Link to="">Home</Link> 
+          <Link to="/">Home</Link> 
         </li>
         <li>
-          <Link to="">Project</Link> 
+          <Link to="/projects">Project</Link> 
         </li>
         <li>
-          <Link to="">Tasks</Link>
+          <Link to="/Contacts">Contacts</Link>
         </li>
          <li>
-          <Link to="">Requests</Link>
+          <Link to="/faq">FAQ</Link>
         </li>
         <li>
          

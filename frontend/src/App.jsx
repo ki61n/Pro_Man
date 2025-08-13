@@ -11,7 +11,6 @@ function App() {
 
   return (
     <>
-    <Nav />
       <Routes>
         <Route path="/" element={<Login />} /> 
         <Route path="/admin/*" element={<Admin />} />

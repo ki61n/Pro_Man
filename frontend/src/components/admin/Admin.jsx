@@ -8,7 +8,7 @@ import Adminhome from './Adminhome'
 
 function Admin() {
   return (
-    <div>
+    <div className='flex flex-col max-sm:flex-row'>
         <Adminnav/>
         <Routes>
             {/* Define routes relative to /admin */}
