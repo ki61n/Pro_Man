@@ -2,6 +2,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import Adminnav from './Adminnav';
 
 function Updateproject() {
   const { id } = useParams();
@@ -69,6 +70,8 @@ const navigate=useNavigate()
 
   return (
     <div>
+      <div className='navclass'>
+        <Adminnav/></div>
       <h1>Update Project</h1>
       <form className="formcss" onSubmit={update}>
         <label>Project Name:</label>

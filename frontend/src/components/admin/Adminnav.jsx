@@ -1,52 +1,18 @@
-// import React from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
 
-// function Adminnav() {
-//   const navigate = useNavigate();
-//   return (
-//     <div className=''>
-//       <ul className="flex gap-3">
-//         <li>
-//           <Link to="/admin/adminhome">Home</Link> {/* Use Link for navigation */}
-//         </li>
-//         <ul className='dropdown'>
-//         <li>
-//           <Link to="/admin/adminhome/project">Project</Link> {/* Use Link for navigation */}
-//           <Link to="/admin/adminhome/project">Add Project</Link> 
-//           <Link to="/admin/adminhome/project"> view Project</Link> 
-//         </li>
-//         </ul>
-//         <li>
-//           <Link to="/users">Users</Link> {/* Add route for users */}
-//         </li>
-//         <li>
-//           <a
-//             href="#"
-//             onClick={() => {
-//               localStorage.clear(); // Clear localStorage on logout
-//               navigate('/'); // Redirect to login page
-//             }}
-//           >
-//             Logout
-//           </a>
-//         </li>
-//       </ul>
-//     </div>
-//   );
-// }
-
-// export default Adminnav;
 
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo1 from '../../assets/logo1.png';
+import menuimg from '../../assets/menu.jpg';
 function Adminnav() {
   const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
+  const [menu, setMenu] = useState(false);
 
-  return (
-    <nav className="bg-gray-800 text-white p-3 flex gap-6 items-center max-sm:flex-col max-sm:w-[15rem] max-sm:max-w sticky">
-      <ul className="flex gap-6 items-center max-sm:flex-col">
+  return (<div className="sm:hover:ring-1 hover:ring-slate-400 sm:bg-black">
+    <img src={menuimg} alt="Logo" className="fixed left-3 top-3 h-8 hover:scale-110 transition-transform duration-300 rounded-b-full  z-50  sm:hidden " onClick={() => setMenu(!menu)} />
+    <nav className={`bg-[rgba(57,57,57,0.22)] text-white p-3 flex gap-6 items-center max-sm:flex-col max-sm:w-[15rem] ] max-sm:sticky backdrop-blur-xl  duration-500 ${window.innerWidth <= 640 ? menu ? 'translate-x-0' : '-translate-x-full':''} transition-transform duration-300`}>
+      <ul className="flex gap-6 items-center max-sm:flex-col max-sm:h-[98svh] w-full">
         <li>
           <Link to="/admin/adminhome">
             <img src={logo1} alt="Logo" className="h-13 hover:scale-110 transition-transform duration-300 rounded-2xl" />
@@ -95,7 +61,7 @@ function Adminnav() {
           </Link>
         </li>
 
-        <li className="ml-auto">
+        <li className=" max-sm:mt-auto max-sm:text-black sm:ml-auto">
           <button
             onClick={() => {
               localStorage.clear();
@@ -108,6 +74,7 @@ function Adminnav() {
         </li>
       </ul>
     </nav>
+    </div>
   );
 }
 

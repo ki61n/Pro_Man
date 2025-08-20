@@ -43,6 +43,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'; // Import axios
 import { useNavigate } from 'react-router-dom';
+import Adminnav from './Adminnav';
 
 function Viewproject() {
   const [data, setData] = useState([]); // Initialize as an empty array
@@ -62,7 +63,7 @@ const navigate=useNavigate()
   }, []);
 
   return (
-    <div className='mx-40 max-sm:mx-10 sm:mx-25'>
+    <div className='mx-40 max-sm:mx-10 sm:mx-25 my-25'>
       <h1>View Project</h1>
       <div className="fullgrid" >
         {data.map((r, i) => (
@@ -73,6 +74,8 @@ const navigate=useNavigate()
           </div>
         ))}
       </div>
+      <div className='navclass'>
+        <Adminnav/></div>
     </div>
   );
 }
