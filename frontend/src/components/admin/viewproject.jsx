@@ -65,12 +65,12 @@ const navigate=useNavigate()
   return (
     <div className='mx-40 max-sm:mx-10 sm:mx-25 my-25'>
       <h1>View Project</h1>
-      <div className="fullgrid" >
+      <div className="fullgrid " >
         {data.map((r, i) => (
-          <div className="card flex flex-col justify-around max-w-[50rem] gap-5  sm:col-span-6 max-sm:col-span-11 rounded-3xl p-8 md:col-span-4 " key={i}>
+          <div className="card flex flex-col justify-around max-w-[50rem] gap-5  sm:col-span-6 max-sm:col-span-11 rounded-3xl p-8 md:col-span-4 h-[15rem]" key={i}>
             <h2>Project Name: {r.projectName}</h2>
-            <p>Project Description: {r.projectDescription}</p>
-            <button className="btn1" onClick={()=>{ navigate(`viewproject/${r._id}`)}}>View Project</button>
+            <div className='h-[3rem] '>Project Description: <p className='h-full overflow-y-scroll scrollbar-hide'>{r.projectDescription}</p></div>
+            <div className='flex gap-5'><p className='mt-2 '>{r.projectStatus}</p><button className="btn1" onClick={()=>{ navigate(`viewproject/${r._id}`)}}>View Project</button></div>
           </div>
         ))}
       </div>

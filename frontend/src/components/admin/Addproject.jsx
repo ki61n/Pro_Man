@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Adminnav from "./Adminnav";
 
@@ -13,6 +13,21 @@ function AddProject() {
   });
 
   const [message, setMessage] = useState("");
+  const [users, setUsers] = useState([]); // State to hold users
+  useEffect(()=>{
+    const fetchuser=async ()=>{
+      try{
+    const response=await axios.get("http://localhost:3000/viewmembers")
+    setUsers(response.data);
+    console.log(response.data);
+    console.log(users.data);
+    
+    }catch(error){
+      console.error("Error fetching users:", error);
+    }
+  };
+  fetchuser();
+}, []);
 
   // Handle input change
   const handleChange = (e) => {
@@ -35,7 +50,8 @@ function AddProject() {
         leaderAssigned: "",
         maxMembers: "",
         
-      });
+      })
+      console.log(res.data);
     } catch (err) {
       setMessage(`❌ Error: ${err.response?.data?.error || err.message}`);
     }
@@ -47,8 +63,8 @@ function AddProject() {
         <Adminnav/></div>
           
         <div></div>
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6">
-      <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-lg">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6 ">
+      <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-4xl ">
         <h1 className="text-2xl font-bold mb-6 text-center">Add New Project</h1>
 
         {message && (
@@ -58,6 +74,7 @@ function AddProject() {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Project Name */}
           <input
             type="text"
@@ -76,7 +93,7 @@ function AddProject() {
             value={formData.projectDescription}
             onChange={handleChange}
             required
-            className="w-full border border-gray-300 rounded-lg px-4 py-2 h-24 focus:outline-none focus:ring focus:ring-blue-200"
+            className="w-full border border-gray-300 rounded-lg px-4 py-2  focus:outline-none focus:ring focus:ring-blue-200 input-scale col-start-2 row-span-5"
           />
 
           {/* Due Date */}
@@ -90,7 +107,7 @@ function AddProject() {
           />
 
           {/* Leader Assigned */}
-          <input
+          {/* <input
             type="text"
             name="leaderAssigned"
             placeholder="Leader Assigned"
@@ -98,7 +115,30 @@ function AddProject() {
             onChange={handleChange}
             required
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-blue-200"
-          />
+          /> */}
+          <select
+            name="leaderAssigned"
+            id="leaderAssigned"
+            value={formData.leaderAssigned}
+            onChange={handleChange}
+            required
+            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-blue-200 hover:bg-red-400  overflow-y-auto" // Changed: Added fixed height and vertical scroll
+            size={1} // Ensures it's a dropdown, not a listbox
+          >
+            <option value="">Select Leader</option>
+            {users.map((user) => (
+              <option
+                key={user._id}
+                value={user._id}
+                className={`${user.userType === 'leader' ? 'bg-cyan-300 border-black hover:bg-red-400' : 'bg-fuchsia-300'} border-2`}
+              >
+                {user.userName}
+                {user.userType === 'leader' ? '(Leader)' : '(member)'}
+              </option>
+            ))}
+          </select>
+          {/* Changed: Added h-[3rem] and overflow-y-auto to make the select box fixed height and scrollable when options overflow */}
+          {/* ...existing code... */}
 
           {/* Max Members */}
           <input
@@ -121,6 +161,7 @@ function AddProject() {
           >
             Add Project
           </button>
+          </div>
         </form>
       </div>
       

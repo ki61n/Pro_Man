@@ -7,6 +7,8 @@ import menuimg from '../../assets/menu.jpg';
 function Adminnav() {
   const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showDropdown2, setShowDropdown2] = useState(false);
+
   const [menu, setMenu] = useState(false);
 
   return (<div className="sm:hover:ring-1 hover:ring-slate-400 sm:bg-black">
@@ -55,10 +57,24 @@ function Adminnav() {
           )}
         </li>
 
-        <li className="">
-          <Link to="/users" className="hover:text-yellow-400">
-            Users
-          </Link>
+        <li className=" relative"
+        onMouseEnter={() => setShowDropdown2(true)}
+          onMouseLeave={() => setShowDropdown2(false)}>
+          <button>Users</button>
+          {showDropdown2 && (
+            <ul className="absolute left-0 top-4 mt-2 bg-white text-black shadow-md rounded w-40" >
+              <li>
+                <Link
+                  to="/admin/adminhome/viewleaders"
+                  className="block px-4 py-2 hover:bg-gray-200 hover:rounded-l"
+                    onClick={() => setShowDropdown2(false)}
+                >
+                 users
+                </Link>
+              </li>
+             
+            </ul>
+          )}
         </li>
 
         <li className=" max-sm:mt-auto max-sm:text-black sm:ml-auto">

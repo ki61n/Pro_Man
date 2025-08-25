@@ -1,8 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-function Myrequests() {
+function  Myrequests() {
   const id=localStorage.getItem('id')
   const mid = id; // Assuming 'id' is the member ID from localStorage
   console.log("Member ID:", id);

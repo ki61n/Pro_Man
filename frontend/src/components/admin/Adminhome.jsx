@@ -20,6 +20,8 @@ function Adminhome() {
       };
       fetchProjects();
     }, []);
+    const [hover,setHover] = useState(false);
+
   return (
     <div className='overflow-x-hidden '>
       <div className=' w-full absolute top-0 h-[48%]'>
@@ -89,15 +91,15 @@ function Adminhome() {
 
     <h2 className='text-2xl font-bold text-black transform translate-x-10 translate-y-1 font-[Poppins, sans-serif]'>Project List</h2>
 
-    <div className=" overflow-x-auto ring-1 ring-slate-700/5 rounded-2xl shadow-2xl p-5 ">
-  <div className="flex gap-4 min-w-max p-4">
+    <div className={`overflow-x-auto ring-1  ${hover ? '' :'scrollbar-hide' } ring-slate-700/5 rounded-2xl shadow-2xl p-5  px-1 pb-8  `} onMouseEnter={ () => setHover(true)} onMouseLeave={() => setHover(false)}>
+  <div className="flex gap-4 min-w-max ">
     {data.map((r, i) => (
       <div
-        className="card rounded-2xl p-4 border w-64 flex-shrink-0 overflow-hidden hover:scale-105 transition-transform duration-300 font-[Poppins, sans-serif]"
+        className="card rounded-2xl p-4  border w-80 h-60 flex-shrink-0 overflow-hidden transition-transform duration-300 font-[Poppins, sans-serif] hover:scale-105"
         key={i}
       >
-        <h2>Project Name: {r.projectName}</h2>
-        <p>Project Description: {r.projectDescription}</p>
+        <h2> {r.projectName}</h2>
+        <div>Project Description: <p className='h-25 overflow-y-scroll scrollbar-hide'>{r.projectDescription}</p></div>
         <button
           className="btn1"
           onClick={() => navigate(`/admin/adminhome/project/viewproject/${r._id}`)}

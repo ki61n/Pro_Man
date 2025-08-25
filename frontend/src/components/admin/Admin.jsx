@@ -6,6 +6,7 @@ import Viewprojectbyid from './Viewprojectbyid'
 import Updateproject from './Updateproject'
 import Adminhome from './Adminhome'
 import AddProject from './Addproject'
+import Viewusers from './Viewusers'
 
 function Admin() {
   return (
@@ -18,6 +19,7 @@ function Admin() {
             <Route path="adminhome/project/viewproject/:id" element={<Viewprojectbyid />} /> 
             <Route path="adminhome/addproject" element={<AddProject />} />
             <Route path="adminhome/project/viewproject/:id/updateproject/:id" element={<Updateproject />} /> 
+            <Route path="adminhome/viewleaders" element={<Viewusers />} />
 
         </Routes>
       

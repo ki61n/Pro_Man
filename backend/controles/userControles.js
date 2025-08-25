@@ -48,14 +48,29 @@ catch(error){
 }
 }
 
-const Viewmembers=async (req,res)=>{
-    try{
-        const members=await User.find({userType:"user"}).sort({createdAt:-1})
-        res.status(201).json(members)
-    }catch(error){
-        res.status(400).json({error:error.message})
+// const Viewmembers=async (req,res)=>{
+//     try{
+//         const members=await User.find({userType:{$in:["leader","user"]}},{projectAsignedStat:'assigned'}).sort({createdAt:-1})
+//         res.status(201).json(members)
+//     }catch(error){
+//         res.status(400).json({error:error.message})
+//     }
+// }
+
+const Viewmembers = async (req, res) => {
+    try {
+        const leaders = await User.find(
+            { userType: "leader", projectAsignedStat: "assigned" }
+        );
+        const users = await User.find(
+            { userType: "user", projectAsignedStat: "not_assigned" }
+        );
+        const members = [...leaders, ...users]
+        res.status(200).json(members);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
     }
-}
+};
 
 
 const viewUser=async (req,res)=>{

@@ -3,9 +3,64 @@
 @layer components{
     .input-scale{@apply hover:scale-105 transform duration-500 focus:bg-blue-200}
     .formcss{@apply pl-[10em] pr-[10em] font-bold text-blue-600 h-[30rem] bg-blue-200 w-xl rounded-xl shadow-xl ring-1  ring-slate-900/5 }
-    .btn1{@apply bg-blue-500 rounded-lg p-2 text-white  ml-[auto] mr-[auto] mt-4 hover:bg-amber-200}
+    .btn1{@apply bg-blue-500 rounded-lg p-2 text-white  ml-[auto] mr-[auto] mt-4 hover:bg-amber-200 hover:text-black hover:font-bold}
     .card{@apply ml-4 mt-5 max-w-2xl bg-amber-50 shadow-xl  ring-1 ring-slate-900/5}
     .minicard{@apply ml-4 mt-5 max-w-44 bg-amber-50 shadow-xl h-[8rem] ring-1 ring-slate-900/5 }
     .fullgrid{@apply grid grid-cols-12 gap-2}
-    .navclass{@apply absolute z-10 sm:w-full top-0 left-0 max-sm:fixed w-full}
+    .navclass{@apply absolute z-10 sm:w-full top-0 left-0 max-sm:fixed w-full }
 }   
+@layer base{
+    .bg-custom {@apply bg-gradient-to-r from-blue-500 to-purple-500}
+    .text-custom {@apply text-blue-500}
+    .border-custom {@apply border border-gray-300}
+    .shadow-custom {@apply shadow-md}
+    .hover\:bg-custom:hover {@apply bg-gradient-to-r from-blue-500 to-purple-500}
+    .transition-custom {@apply transition duration-300 ease-in-out}
+    .scale-custom {@apply transform scale-105}
+    .input-scale {@apply hover:scale-105 transform duration-500 focus:bg-blue-200}
+}
+@layer utilities {
+    .bg-custom {
+        background-color: #f0f4f8;
+    }
+    .text-custom {
+        color: #333;
+    }
+    .border-custom {
+        border-color: #ccc;
+    }
+    .shadow-custom {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+}
+@layer theme {
+    .bg-custom {
+        background-color: #f0f4f8;
+    }
+    .text-custom {
+        color: #333;
+    }
+    .border-custom {
+        border-color: #ccc;
+    }
+    .shadow-custom {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+}
+@layer screens {
+    @media (min-width: 640px) {
+        .sm\:bg-custom {
+            background-color: #f0f4f8;
+        }
+        .sm\:text-custom {
+            color: #333;
+        }
+        .sm\:border-custom {
+            border-color: #ccc;
+        }
+        .sm\:shadow-custom {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    }
+}
+

@@ -14,6 +14,7 @@ function Member() {
         <Route path="/memberhome" element={<Memberhome/>} />
         <Route path='/memberhome/memtask' element={<MemTasks/>} />
         <Route path='/memberhome/requests' element={<Myrequests/>} />
+        <Route path='/memberhome/sendrequests/:tid/:lid' element={<Requests/>} />
 
         <Route path='/memberhome/myrequests/:tid/:lid' element={<Reqres/>} />
       </Routes>
