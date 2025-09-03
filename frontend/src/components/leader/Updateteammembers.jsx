@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Leadernav from './Leadernav';
 
 function Updateteammembers() {
   const [allUsers, setAllUsers] = useState([]);
@@ -51,6 +52,9 @@ function Updateteammembers() {
 
   return (
     <div>
+       <div className='navclass'>
+        <Leadernav />
+      </div>
       <h1>Update Team Members</h1>
       <form onSubmit={handleSubmit}>
         <div className="fullgrid">

@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Leadernav from './Leadernav';
 
 function Rejectedreq() {
     const [res, setRes] =useState([]);
@@ -18,6 +19,9 @@ function Rejectedreq() {
     },[])
   return (
     <div>
+         <div className='navclass'>
+        <Leadernav />
+      </div>
         <h1>Leader Request</h1>
         <div className='fullgrid'>    
             {res.map((r,i)=>(
@@ -26,6 +30,7 @@ function Rejectedreq() {
                 <p>{r.username?.userName || ''}</p>
                 <p>{r.task?.task || ''}</p>
                 <p>{r.request}</p>
+               <p className="mt-2 text-sm italic">{r.status}</p>
                 </div>
                 <button className='btn1 mb-[auto]'
                 onClick={()=>navigate(`/leader/leaderhome/requests/view/${r._id}`)}>view details</button>

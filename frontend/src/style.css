@@ -3,7 +3,7 @@
 @layer components{
     .input-scale{@apply hover:scale-105 transform duration-500 focus:bg-blue-200}
     .formcss{@apply pl-[10em] pr-[10em] font-bold text-blue-600 h-[30rem] bg-blue-200 w-xl rounded-xl shadow-xl ring-1  ring-slate-900/5 }
-    .btn1{@apply bg-blue-500 rounded-lg p-2 text-white  ml-[auto] mr-[auto] mt-4 hover:bg-amber-200 hover:text-black hover:font-bold}
+    .btn1{@apply bg-blue-500 rounded-lg p-2 text-white   hover:bg-amber-200 hover:text-black hover:font-bold}
     .card{@apply ml-4 mt-5 max-w-2xl bg-amber-50 shadow-xl  ring-1 ring-slate-900/5}
     .minicard{@apply ml-4 mt-5 max-w-44 bg-amber-50 shadow-xl h-[8rem] ring-1 ring-slate-900/5 }
     .fullgrid{@apply grid grid-cols-12 gap-2}

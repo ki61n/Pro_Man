@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import Leadernav from './Leadernav';
 
 function Tasks() {
   const { id, mid } = useParams(); 
@@ -39,6 +40,9 @@ const navigate=useNavigate()
 
   return (
     <div>
+       <div className='navclass'>
+        <Leadernav />
+      </div>
       <h1>Tasks</h1>
       <form onSubmit={submitdata} className="formcss ml-72">
         <label>Task</label>

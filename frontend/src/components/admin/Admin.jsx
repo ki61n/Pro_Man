@@ -7,6 +7,9 @@ import Updateproject from './Updateproject'
 import Adminhome from './Adminhome'
 import AddProject from './Addproject'
 import Viewusers from './Viewusers'
+import AdmionRespond from './AdmionRespond'
+import Replay from './replay'
+import RequestDetails from './Requestdetails'
 
 function Admin() {
   return (
@@ -20,6 +23,11 @@ function Admin() {
             <Route path="adminhome/addproject" element={<AddProject />} />
             <Route path="adminhome/project/viewproject/:id/updateproject/:id" element={<Updateproject />} /> 
             <Route path="adminhome/viewleaders" element={<Viewusers />} />
+            <Route path="adminhome/requests" element={<AdmionRespond />} />
+            <Route path="adminhome/requests/replay/:id" element={<Replay />} />
+            <Route path="adminhome/requests/details/:id" element={<RequestDetails />} />
+
+
 
         </Routes>
       

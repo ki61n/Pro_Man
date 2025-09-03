@@ -14,6 +14,7 @@ const createLeaderRequest = async (req, res) => {
         // Create leader request with admin's ID
         const leaderReq = await LeaderRequest.create({
             teamleader: req.body.teamleader,
+            lname:req.body.teamleader,
             adminn: adminUser._id,
             project:req.body.project,
             request: req.body.request,
@@ -30,7 +31,7 @@ const createLeaderRequest = async (req, res) => {
 
 const viewLeaderRequest=async (req,res)=>{
     try {
-        const leaderreq=await LeaderRequest.find().sort({createdAt:-1})
+        const leaderreq=await LeaderRequest.find().sort({createdAt:-1}).populate('lname').populate('project')
         res.status(200).json(leaderreq)
         } catch (error) {
             res.status(400).json({ error: error.message });
@@ -83,7 +84,7 @@ const viewreqByid = async (req, res) => {
 
     try {
         // Fetch leader requests matching the query
-        const leaderreq = await LeaderRequest.find({ $or: query });
+        const leaderreq = await LeaderRequest.find({ $or: query }).populate('project').populate('lname');
         if (leaderreq.length === 0) {
             return res.status(404).json({ error: "No leader requests found with the given ID" });
         }

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import Leadernav from './Leadernav';
 
 function Taskmember() {
   const { id } = useParams();
@@ -24,6 +25,9 @@ const navigate=useNavigate()
   return (
     
     <div>
+       <div className='navclass'>
+        <Leadernav />
+      </div>
       <h1>Task Members</h1>
       <div className="fullgrid">
         {mem.map((r, i) => (

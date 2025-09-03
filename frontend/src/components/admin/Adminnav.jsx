@@ -11,7 +11,8 @@ function Adminnav() {
 
   const [menu, setMenu] = useState(false);
 
-  return (<div className="sm:hover:ring-1 hover:ring-slate-400 sm:bg-black">
+  return (
+  <div className="sm:hover:ring-1 hover:ring-slate-400 sm:bg-black">
     <img src={menuimg} alt="Logo" className="fixed left-3 top-3 h-8 hover:scale-110 transition-transform duration-300 rounded-b-full  z-50  sm:hidden " onClick={() => setMenu(!menu)} />
     <nav className={`bg-[rgba(57,57,57,0.22)] text-white p-3 flex gap-6 items-center max-sm:flex-col max-sm:w-[15rem] ] max-sm:sticky backdrop-blur-xl  duration-500 ${window.innerWidth <= 640 ? menu ? 'translate-x-0' : '-translate-x-full':''} transition-transform duration-300`}>
       <ul className="flex gap-6 items-center max-sm:flex-col max-sm:h-[98svh] w-full">
@@ -75,6 +76,12 @@ function Adminnav() {
              
             </ul>
           )}
+        </li>
+
+        <li>
+          <Link to="/admin/adminhome/requests" className="hover:text-yellow-400">
+            Requests
+          </Link>
         </li>
 
         <li className=" max-sm:mt-auto max-sm:text-black sm:ml-auto">

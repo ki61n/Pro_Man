@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Leadernav from './Leadernav';
 
 function Leadereq() {
     const [res, setRes] =useState([]);
@@ -18,6 +19,9 @@ function Leadereq() {
     },[])
   return (
     <div>
+         <div className='navclass'>
+        <Leadernav />
+      </div>
         <h1>Leader Request</h1>
         <div className='fullgrid'>    
             {res.map((r,i)=>(

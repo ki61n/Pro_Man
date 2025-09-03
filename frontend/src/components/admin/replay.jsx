@@ -1,11 +1,14 @@
 
 
+
+
+
+
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import Leadernav from './Leadernav';
 
-function Respond() {
+function Replay() {
   const [response, setResponse] = useState(null);
   const [textResponse, setTextResponse] = useState('');
   const { id } = useParams();
@@ -14,7 +17,7 @@ function Respond() {
   useEffect(() => {
     const fetchResponse = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/viewmemreqByid/${id}`);
+        const res = await axios.get(`http://localhost:3000/viewreqByid/${id}`);
         if (Array.isArray(res.data) && res.data.length > 0) {
           setResponse(res.data[0]);
         }
@@ -28,7 +31,7 @@ function Respond() {
 
   const approve = async () => {
     try {
-      await axios.put(`http://localhost:3000/leaderresponce/${id}`, {
+      await axios.put(`http://localhost:3000/adminresponce/${id}`, {
         status: 'approved',
         response: textResponse
       });
@@ -41,7 +44,7 @@ function Respond() {
 
   const reject = async () => {
     try {
-      await axios.put(`http://localhost:3000/leaderresponce/${id}`, {
+      await axios.put(`http://localhost:3000/adminresponce/${id}`, {
         status: 'rejected',
         response: textResponse
       });
@@ -58,15 +61,12 @@ function Respond() {
 
   return (
     <div>
-       <div className='navclass'>
-        <Leadernav />
-      </div>
       <h1>Respond</h1>
       <div className="formcss">
-        <h2>User: {response.username?.userName}</h2>
+        {/* <h2>User: {response.username?.userName}</h2> */}
         <p><strong>Request:</strong> {response.request}</p>
         <p><strong>Status:</strong> {response.status}</p>
-        <p><strong>Task:</strong> {response.task?.task}</p>
+        <p><strong>Project:</strong> {response.project?.projectName}</p>
 
         <div className='mt-4'>
           <label>Response:</label>
@@ -85,4 +85,4 @@ function Respond() {
   );
 }
 
-export default Respond;
+export default Replay;

@@ -6,6 +6,10 @@ const ledRequest=new schema({
         ref: 'Project',  
         require:true
     },
+    lname:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'User'
+    },
     adminn:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'User',

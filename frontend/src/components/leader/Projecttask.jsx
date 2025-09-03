@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import Leadernav from './Leadernav';
 
 function Projecttask() {
     const id=localStorage.getItem('id')
@@ -22,6 +23,9 @@ function Projecttask() {
     },[])
   return (
     <div>
+       <div className='navclass'>
+        <Leadernav />
+      </div>
         <h1>Learn Project</h1>
         <div className="grid grid-cols-12 gap-2">
             {data.map((r , i)=>(

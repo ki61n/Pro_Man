@@ -1,13 +1,12 @@
 
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
+import Leadernav from './Leadernav';
 
 function Rejdetails() {
   const [response, setResponse] = useState(null);
-  const [textResponse, setTextResponse] = useState('');
   const { id } = useParams();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchResponse = async () => {
@@ -24,31 +23,7 @@ function Rejdetails() {
     fetchResponse();
   }, [id]);
 
-  // const approve = async () => {
-  //   try {
-  //     await axios.put(`http://localhost:3000/leaderresponce/${id}`, {
-  //       status: 'approved',
-  //       response: textResponse
-  //     });
-  //     alert('Request approved!');
-  //     navigate(-1);
-  //   } catch (error) {
-  //     console.error('Error approving:', error);
-  //   }
-  // };
-
-  // const reject = async () => {
-  //   try {
-  //     await axios.put(`http://localhost:3000/leaderresponce/${id}`, {
-  //       status: 'rejected',
-  //       response: textResponse
-  //     });
-  //     alert('Request rejected!');
-  //     navigate(-1);
-  //   } catch (error) {
-  //     console.error('Error rejecting:', error);
-  //   }
-  // };
+  
 
   if (!response) {
     return <div>Loading...</div>;
@@ -56,24 +31,19 @@ function Rejdetails() {
 
   return (
     <div>
+       <div className='navclass'>
+        <Leadernav />
+      </div>
       <h1>Respond</h1>
       <div className="formcss">
         <h2>User: {response.username?.userName}</h2>
         <p><strong>Request:</strong> {response.request}</p>
         <p><strong>Status:</strong> {response.status}</p>
         <p><strong>Task:</strong> {response.task?.task}</p>
+        <p><strong>Responce :</strong> {response.response}</p>
 
-        {/* <div className='mt-4'>
-          <label>Response:</label>
-          <textarea
-            cols="30"
-            rows="4"
-            value={textResponse}
-            onChange={(e) => setTextResponse(e.target.value)}
-          ></textarea>
-          <br />
-          
-        </div> */}
+
+      
       </div>
     </div>
   );

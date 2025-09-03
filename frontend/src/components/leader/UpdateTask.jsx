@@ -2,6 +2,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import Leadernav from './Leadernav';
 
 function UpdateTask() {
   const { id, mid } = useParams();
@@ -60,6 +61,9 @@ function UpdateTask() {
   if (loading) return <p>Loading...</p>;
 
   return (
+    <div> <div className='navclass'>
+        <Leadernav />
+      </div>
     <div className="formcss">
       <h1>Update Task</h1>
       <form onSubmit={handleSubmit}>
@@ -91,7 +95,7 @@ function UpdateTask() {
 
         <button className='btn1' type="submit">Update Task</button>
       </form>
-    </div>
+    </div></div>
   );
 }
 

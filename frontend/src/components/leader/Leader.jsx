@@ -17,12 +17,12 @@ import Allrequests from './Allrequests'
 import Acceptedreq from './Acceptedreq'
 import Rejectedreq from './Rejectedreq'
 import Rejdetails from './rejdetails'
+import Leaderrequest from './Leaderrequest'
 
 function Leader() {
   return (
     <div>
 
-      <Leadernav/>
       <Routes>
         <Route path='/leaderhome' element={<Leaderhome />} />
         <Route path='leaderhome/lproject' element={<Lproject />} />     
@@ -42,7 +42,9 @@ function Leader() {
            <Route path='leaderhome/allreq/rejected' element={<Rejectedreq />} /> 
           <Route path='leaderhome/requests/replay/:id' element={<Respond   />} /> 
           <Route path='leaderhome/requests/view/:id' element={<Rejdetails   />} /> 
-        
+
+        <Route path='leaderhome/lproject/request/:pid' element={<Leaderrequest />} />     
+
       </Routes>
     </div>
   )
