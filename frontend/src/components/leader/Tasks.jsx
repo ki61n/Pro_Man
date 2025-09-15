@@ -43,24 +43,27 @@ const navigate=useNavigate()
        <div className='navclass'>
         <Leadernav />
       </div>
-      <h1>Tasks</h1>
-      <form onSubmit={submitdata} className="formcss ml-72">
+      <div className='mt-19 mx-15 flex flex-col'><h1 className='mx-auto text-5xl'>Tasks</h1>
+      <form onSubmit={submitdata} className="w-[70%] bg-green-400 mx-auto p-15 grid gap-2 rounded-3xl mt-10">
         <label>Task</label>
         <input
           type="text"
           name="task"
           value={taskData.task}
-          placeholder="Enter a task"
+          placeholder="Add a task"
           onChange={handleChange}
+          className='p-2 rounded-lg border-2'
         />
         <br />
 
         <label>Task Description</label>
-        <input
+        <textarea
           type="text"
           name="TaskDescription"
           value={taskData.TaskDescription}
           onChange={handleChange}
+          
+          className='p-2 rounded-lg border-2 max-h-35 min-h-30'
         />
         <br />
 
@@ -70,11 +73,12 @@ const navigate=useNavigate()
           name="dueDate"
           value={taskData.dueDate}
           onChange={handleChange}
+          className='p-2 rounded-lg border-2'
         />
         <br />
 
         <button type="submit" className="btn1">Add Task</button>
-      </form>
+      </form></div>
     </div>
   );
 }

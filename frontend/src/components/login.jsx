@@ -14,6 +14,7 @@ function Login() {
     confirmPassword: "",
   });
   const [isSignup, setIsSignup] = useState(false);
+  const[showpassword,setShowpassword]=useState(false);
 
   const navigate = useNavigate();
 
@@ -138,12 +139,18 @@ function Login() {
             )}
 
             <label>Password</label>
-            <input
-              type="password"
-              className="w-full border p-2 mb-2 input-scale"
+            <div className="relative"><input
+              type={showpassword ? "text" : "password"}
+              className="w-full border p-2 mb-2 input-scale "
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-            />
+            > </input><button
+    type="button"
+    onClick={() => setShowpassword(!showpassword)}
+    className="absolute right-2 top-2 text-sm text-gray-600 hover:text-black"
+  >
+    {showpassword ? "🙈" : "👁️"}
+  </button> </div>
             {error.password && (
               <p className="text-red-500 text-sm">{error.password}</p>
             )}

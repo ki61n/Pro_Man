@@ -94,6 +94,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import Membernav from './membernav';
 
 function Reqres() {
   const [responses, setResponses] = useState([]);
@@ -143,9 +144,10 @@ function Reqres() {
 
   return (
     <div>
-      <h1>Respond</h1>
+      <div className='navclass'><Membernav/></div>
+      <div className='mt-19 mx-15 bg-green-100 grid justify-center gap-5 p-10'><h1 className='mx-5 text-4xl my-5 '>Respond</h1>
       {responses.map((response, index) => (
-        <div key={index} className="formcss" style={{ border: '1px solid #ccc', padding: '15px', marginBottom: '10px' }}>
+        <div key={index} className=" bg-linear-300 from-lime-400 to-green-300  w-[40rem] grid gap-5 rounded-2xl" style={{ border: '1px solid #ccc', padding: '35px', marginBottom: '10px' }}>
           <h2>User: {response.username?.userName || 'N/A'}</h2>
           <p><strong>Request:</strong> {response.request || 'No request text'}</p>
           <p><strong>Task:</strong> {response.task?.task || 'No task info'}</p>
@@ -153,7 +155,7 @@ function Reqres() {
 
           <p><strong>responce:</strong> {response.response}</p>
         </div>
-      ))}
+      ))}</div>
     </div>
   );
 }

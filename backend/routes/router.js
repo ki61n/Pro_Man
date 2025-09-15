@@ -1,6 +1,6 @@
 const express=require('express')
 const router=express.Router()
-const {reg, viewAllUsers, viewUser, updateUser, login, Viewmembers} =require("../controles/userControles")
+const {reg, viewAllUsers, viewUser, updateUser, login, Viewmembers, Viewtaskmembers} =require("../controles/userControles")
 const { addProject, viewallproject, viewproject, Updateproject, viewProjecByNameOrId } = require('../controles/projectControles')
 const { asignMember,taskassign, getAsignMembers, getAsignMembersById, updateMembers, getAllTaskAssign, gettaskAssignedByid, updateTask, gettaskAssignedBymemid } = require('../controles/tasks')
 const { createLeaderRequest, memberrequest, viewLeaderRequest, viewreqByid, viewLeaderReqby, adminResponse, viewMemberReqby, viewMemberRequest, MemviewreqByid, leaderResponse, MemviewreqByidstat, MemviewreqByidaccepted, MemviewreqByidrejected, MemviewreqBy } = require('../controles/request')
@@ -14,7 +14,7 @@ router.get("/viewallusers",viewAllUsers)
 router.get("/viewuser/:id",viewUser)
 router.put("/updateuser/:id",updateUser)
 router.get("/viewmembers",Viewmembers)
-
+router.get("/viewtaskmembers",Viewtaskmembers)
 //project
 router.post("/addproject",addProject)
 router.get("/viewprojects",viewallproject)

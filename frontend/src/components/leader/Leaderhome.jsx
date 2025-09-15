@@ -78,8 +78,9 @@ function Leaderhome() {
       {pro.map((r,i)=>(
       <div className='card h-50 w-[20.5rem] m-3 rounded-2xl p-3 bg-linear-to-br from-sky-300 to-indigo-500 overflow-y-scroll scrollbar-hide flex flex-col gap-3'key={i}>
         <p>{r.projectName}</p>
-        <p>{r.projectDescription}</p>
-        <button className='btn1' onClick={() => { navigate(`lproject/lprodetails/${r._id}`) }}>view details</button>
+        <div className='h-27 overflow-scroll scrollbar-hide'><p>{r.projectDescription}</p>
+</div>
+        <button className='btn1 self-end' onClick={() => { navigate(`lproject/lprodetails/${r._id}`) }}>view details</button>
       </div>))}
     </div></div></div>
 

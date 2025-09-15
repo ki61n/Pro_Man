@@ -27,8 +27,8 @@ function Leader() {
         <Route path='/leaderhome' element={<Leaderhome />} />
         <Route path='leaderhome/lproject' element={<Lproject />} />     
          <Route path='leaderhome/lproject/lprodetails/:id' element={<ViewLproject />} />
-         <Route path='leaderhome/lproject/lprodetails/:id/addteam/:id' element={<Addteam />} />
-          <Route path='leaderhome/lproject/lprodetails/:id/updateteam/:id' element={<Updateteammembers />} />
+         <Route path='leaderhome/lproject/lprodetails/:id/addteam/:id/:mm' element={<Addteam />} />
+          <Route path='leaderhome/lproject/lprodetails/:id/updateteam/:id/:mm' element={<Updateteammembers />} />
 
          <Route path='/leaderhome/project_task' element={<Projecttask/>}/>
          <Route path='/leaderhome/project_task/projectmembers/:id' element={<Taskmember />} />

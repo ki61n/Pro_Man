@@ -43,21 +43,23 @@ function Leaderrequest() {
      <div className='navclass'>
         <Leadernav />
       </div>
-    <div className="formcss">
-      <h1>Request</h1>
+    <div className="bg-amber-400 mt-25 flex items-center justify-center flex-col p-25 mx-15 ">
+      <h1 className='text-4xl mb-5'>Request</h1>
       {message && <p>{message}</p>}
-      <form onSubmit={send}>
+      <div><form onSubmit={send} className='grid justify-center bg-blue-50 p-10 rounded-2xl'>
         <label htmlFor="request">Topic</label>
         <textarea
+        className='block border-2 border-black my-5 p-2'
+        placeholder='Write your request here...'
           name="request"
           id="request"
-          cols="40"
+          cols="60"
           rows="5"
           value={details.request}
           onChange={(e) => setDetails({ ...details, request: e.target.value })}
         ></textarea>
         <button className="btn1">Send</button>
-      </form>
+      </form></div>
     </div></div>
   );
 }

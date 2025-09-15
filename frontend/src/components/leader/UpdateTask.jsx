@@ -64,34 +64,38 @@ function UpdateTask() {
     <div> <div className='navclass'>
         <Leadernav />
       </div>
-    <div className="formcss">
-      <h1>Update Task</h1>
-      <form onSubmit={handleSubmit}>
-        <label>Task Name:</label><br />
+    <div className=" mt-19 flex flex-col">
+      <h1 className='mx-auto text-5xl'>Update Task</h1>
+      <form onSubmit={handleSubmit} 
+      className="w-[70%] bg-green-400 mx-auto p-15 grid gap-5 rounded-3xl mt-5  "
+>
+        <label>Task Name:</label>
         <input
+        className='p-2 rounded-lg border-2'
           type="text"
           name="task"
           value={formData.task}
           onChange={handleChange}
           required
-        /><br /><br />
-<br />
-        <label>Task Description:</label><br />
+        />
+        <label>Task Description:</label>
         <textarea
+        className='p-2 rounded-lg border-2 max-h-35 min-h-30'
           name="TaskDescription"
           value={formData.TaskDescription}
           onChange={handleChange}
           required
-        ></textarea><br /><br />
+        ></textarea>
 
-        <label>Due Date:</label><br />
+        <label>Due Date:</label>
         <input
+        className='p-2 rounded-lg border-2'
           type="date"
           name="dueDate"
           value={formData.dueDate}
           onChange={handleChange}
           required
-        /><br /><br />
+        />
 
         <button className='btn1' type="submit">Update Task</button>
       </form>

@@ -61,26 +61,45 @@ function Respond() {
        <div className='navclass'>
         <Leadernav />
       </div>
-      <h1>Respond</h1>
-      <div className="formcss">
-        <h2>User: {response.username?.userName}</h2>
-        <p><strong>Request:</strong> {response.request}</p>
-        <p><strong>Status:</strong> {response.status}</p>
-        <p><strong>Task:</strong> {response.task?.task}</p>
+     <div className='sm:mt-30 mx-15'> 
+      <div className="bg-purple-200 p-10 rounded-2xl">
+        <h1 className='mx-[45%] text-4xl'>Respond</h1>
+       <table className='mx-20'>
+        <tr><td className='w-2xs'><strong>User:</strong></td>
+        <td>{response.username?.userName}</td></tr>  
+        <tr>
+          <td><strong>Request:</strong></td>
+          <td>{response.request}</td>
+        </tr>
+        <tr>
+          <td><strong>Status:</strong></td>
+          <td> {response.status}</td>
+        </tr>
+        <tr>
+          <td><strong>Task:</strong></td>
+          <td>{response.task?.task}</td>
+        </tr>
+        <tr>
+          <td><strong>Response:</strong></td>
+        </tr>
 
-        <div className='mt-4'>
-          <label>Response:</label>
+
+
+       </table>
+        <div className=''>
+          <br />
           <textarea
-            cols="30"
-            rows="4"
+            className="w-[80%] h-35 border p-5 mx-20 my-5 rounded-3xl"
+            
             value={textResponse}
+            plaseholder="Write your response here..."
             onChange={(e) => setTextResponse(e.target.value)}
           ></textarea>
           <br />
-          <button className="btn1 mr-4" onClick={approve}>Approve</button>
-          <button className="btn1" onClick={reject}>Reject</button>
+          <div className='my-5 w-full flex justify-center'><button className="btn1 mr-4" onClick={approve}>Approve</button>
+          <button className="btn1" onClick={reject}>Reject</button></div>
         </div>
-      </div>
+      </div></div>
     </div>
   );
 }

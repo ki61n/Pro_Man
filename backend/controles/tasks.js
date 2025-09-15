@@ -208,14 +208,35 @@ const gettaskAssignedBymemid = async (req, res) => {
 // }
 
 // PUT /updateAssignedTask/:id/:mid
+// const updateTask = async (req, res) => {
+//   const { id, mid } = req.params;
+//   const { task, TaskDescription, dueDate } = req.body;
+
+//   try {
+//     const updated = await AsignTask.findOneAndUpdate(
+//       { project: id, member: mid },
+//       { task, TaskDescription, dueDate,status },
+//       { new: true }
+//     );
+
+//     if (!updated) {
+//       return res.status(404).json({ message: 'Task not found' });
+//     }
+
+//     res.status(200).json(updated);
+//   } catch (error) {
+//     res.status(400).json({ error: error.message });
+//   }
+// };
+
 const updateTask = async (req, res) => {
   const { id, mid } = req.params;
-  const { task, TaskDescription, dueDate } = req.body;
+  const { task, TaskDescription, dueDate, status } = req.body; // ✅ include status
 
   try {
     const updated = await AsignTask.findOneAndUpdate(
       { project: id, member: mid },
-      { task, TaskDescription, dueDate },
+      { task, TaskDescription, dueDate, status }, // ✅ now works
       { new: true }
     );
 

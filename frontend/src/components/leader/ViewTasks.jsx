@@ -30,19 +30,19 @@ fetchViewtasks()},[])
        <div className='navclass'>
         <Leadernav />
       </div>
-        <h1>
+        <div className='mt-19 mx-15 flex flex-col'><h1 className=' mx-auto text-5xl '>
             View Tasks
         </h1>
-      <div className='formcss'>
-        <label>Task Name:</label><br />
-        {viewtasks.task}  <br />
-        <label htmlFor="">Task Description</label><br />
-         {viewtasks.TaskDescription}
-         <label htmlFor="">Due Date</label><br />
-         {viewtasks.dueDate}
-         
+      <div className='w-[80%] bg-pink-400 mx-auto p-15 grid gap-5 rounded-3xl mt-10 '>
+        <div className='flex gap-5'><label>Task Name:</label>
+        <label className='text-xl'>{viewtasks?.task || 'no task added'} </label> </div>
+        <label htmlFor="">Task Description</label>
+        <label htmlFor="">{viewtasks?.TaskDescription || 'no task added'}</label>
+         <label htmlFor="">Due Date</label>
+        <label htmlFor="">{viewtasks.dueDate?.substring(0,10) || 'no due date'}</label>  
 
-      </div>
+
+      </div></div>
     </div>
   )
 }

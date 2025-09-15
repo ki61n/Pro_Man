@@ -72,6 +72,20 @@ const Viewmembers = async (req, res) => {
     }
 };
 
+const Viewtaskmembers = async (req, res) => {
+    try {
+        const leaders = await User.find(
+            { userType: "leader", projectAsignedStat: "assigned" }
+        );
+        const users = await User.find(
+            { userType: "user" }
+        );
+        const members = [...leaders, ...users]
+        res.status(200).json(members);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
 
 const viewUser=async (req,res)=>{
     let query=[]
@@ -140,4 +154,4 @@ const login=async (req,res)=>{
     }
 }
 
-module.exports={reg,viewAllUsers,Viewmembers,viewUser,updateUser,login}
+module.exports={reg,viewAllUsers,Viewmembers,viewUser,updateUser,login,Viewtaskmembers}

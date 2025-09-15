@@ -290,7 +290,12 @@ const MemviewreqByidaccepted = async (req, res) => {
     ];
 
     try {
-        const memreq = await memRequest.find({ $or: query ,status:'accepted'}).populate('username').populate('task');
+        const memreq = await memRequest.find({
+            $and: [
+                { $or: query },
+                { status: { $in: ['accepted', 'approved'] } }
+            ]
+        }).populate('task');
         if (memreq.length === 0) {
             return res.status(404).json({ error: "No  requests found with the given ID" });
         }

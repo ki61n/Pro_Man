@@ -22,10 +22,10 @@ function Rejectedreq() {
          <div className='navclass'>
         <Leadernav />
       </div>
-        <h1>Leader Request</h1>
-        <div className='fullgrid'>    
+        <div className='mt-19 mx-15'><h1>Leader Request</h1>
+        <div className='fullgrid gap-5'>    
             {res.map((r,i)=>(
-            <div className='card col-span-2' key={i}>
+            <div className='card col-span-3 p-5 rounded-xl bg-linear-to-tl from-red-300 to-red-500' key={i}>
                 <div>
                 <p>{r.username?.userName || ''}</p>
                 <p>{r.task?.task || ''}</p>
@@ -38,7 +38,7 @@ function Rejectedreq() {
             </div>
             ))}
         </div>
-      
+      </div>
     </div>
   )
 }

@@ -7,3 +7,20 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;     /* Firefox */
 }
+td{
+  padding:10px;
+}
+.eye{
+  border-radius: 0 50% 0 50%;
+  transform: rotate(-45deg);
+}
+.eye::after{
+  content: '';
+  width: 10px;
+  aspect-ratio: 1;
+  position: absolute;
+  border-radius: 50%;
+  border:1px solid black;
+  left:4px;
+  top: 4px;
+}
